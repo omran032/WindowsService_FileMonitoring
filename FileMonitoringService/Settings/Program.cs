@@ -21,7 +21,6 @@ namespace FileMonitoringService
                 fileMonitoring.StartService(null);
                 Console.ReadKey();
                 fileMonitoring.StopService();
-                Console.WriteLine("_______________________ End ____________________");
             }
             else
             {

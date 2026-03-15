@@ -24,7 +24,7 @@ namespace FileMonitoringService
 
         protected override void OnStart(string[] args)
         {
-            string watchFolder = ConfigurationManager.AppSettings["WatchFolder"];
+            string watchFolder       = ConfigurationManager.AppSettings["WatchFolder"];
             string destinationFolder = ConfigurationManager.AppSettings["DestinationFolder"];
 
             ClsMonitoringFile.CreateFile(watchFolder);       //انشاء الملف اذا غير موجود
@@ -35,18 +35,17 @@ namespace FileMonitoringService
 
             foreach (string file in files)
             {
-                try
+                try 
                 {
                     // اسم الملف فقط
                     string fileName = Path.GetFileName(file);
 
-                    // اسم جديد مع التاريخ
                     string newName = DateTime.Now.ToString("yyyy_MM_dd-HH_mm") + " " + fileName;
 
                     // المسار الجديد
                     string newPath = Path.Combine(destinationFolder, newName);
 
-                    // نقل الملف
+                    // نقل  
                     File.Move(file, newPath);
 
                     ClsMonitoringFile.Log("Moved: " + file);
@@ -60,7 +59,7 @@ namespace FileMonitoringService
 
         protected override void OnStop()
         {
-
+            ClsMonitoringFile.Log(" _______________________ ");
 
         }
 
